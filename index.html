@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生成小鎮 1010</title>
+<style>
+html {
+  box-sizing: border-box;
+  font-family: 'Press Start 2P', cursive;
+  background-color: #a3c1e0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.tooltip {
+  position: absolute;
+  z-index: 1000;
+  background: #fff;
+  padding: 10px;
+  border: solid 2px #000;
+  font-size: 14px;
+  color: #000;
+  border-radius: 5px;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.left-column {
+  width: 30%;
+  padding: 10px;
+  background-color: #f0e68c;
+  box-sizing: border-box;  /* 確保 padding 不影響 width */
+}
+
+.right-column {
+  background-color: #fff;
+  width: 70%;
+  padding: 10px;
+  overflow-y: auto;
+  height: 100vh; /* 使用 100vh 以避免不必要的 scroll */
+  box-sizing: border-box; /* 確保 padding 不影響 width */
+}
+
+#output p:nth-child(odd) {
+  background-color: #b7d5f0;
+  color: #333;
+  padding: 12px 18px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+#output p:nth-child(even) {
+  background-color: #e6f2ff;
+  color: #555;
+  padding: 12px 18px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+#output p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+h1 {
+  text-align: center;
+  color: #8b4513;
+}
+
+#loading {
+  display: block;
+  margin: 20px auto;
+}
+
+#next_actions {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+#myCanvas {
+  background-color: lightyellow;
+  display: block;
+  margin: 20px auto;
+  max-width: 100%; /* 確保 canvas 不超過容器寬度 */
+  height: auto;  /* 保持比例 */
+}
+/* 針對小螢幕調整 */
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column; /* 垂直堆疊左右欄 */
+  }
+
+  .left-column {
+    width: 100%; /* 左右欄佔滿寬度 */
+    padding: 0;
+    height: auto;
+  }
+
+  .right-column {
+    width: 100%;
+    padding: 0;
+    height: auto;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  #myCanvas {
+    margin-top: 0;
+  }
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="left-column">
+      <h1 id="name">生成小鎮 1010</h1>
+      <canvas id="myCanvas" width="320" height="320"></canvas>
+    </div>
+    <div class="right-column" id="right-column">
+      <div id="output"></div>
+      <img id="loading" src="loading.svg" width="64" height="64" alt="Loading..." />
+      <div id="next_actions"></div>
+    </div>
+  </div>
+  <script src="prompt.js"></script>
+  <script src="scripts.js"></script>
+</body>
+</html>
